@@ -137,3 +137,62 @@ VTP нужен, чтобы изменения конфигурации (созд
 \- И Server, и Client могут узнавать о новых VLAN от других коммутаторов и удалять имеющиеся у себя VLAN из-за их удаления на других коммутаторах
 
 \- sh run не покажет конфигурацию vlan, в данном случае нужно использовать другие команды sh
+
+**5. Конфигурирование trunk (с. 191)**
+switchport mode trunk – создать VLAN trunk, который переправляет пакеты любых VLAN. Помимо этой команды есть множество опций, например: 
+
+1) можно настроить тип trunking, это может быть IEEE 802.1Q, ISL, либо коммутаторы могут прийти к соглашению, какой именно тип использовать, при помощи DTP;
+2) можно включить administrative mode, в котором есть возможность настроить на коммутаторе, всегда ли делать trunk, никогда ли, либо определять совместно с другим коммутатором, создавать trunk или нет.
+
+switchport trunk encapsulation (dot1q | isl | negotiate) – подкоманда интерфейса, определяющая используемый протокол (negotiate – если оба коммутатора поддерживают оба протокола, они используют ISL, иначе используют тот, который есть у обоих). В Cisco Packet Tracer у коммутатора 2960 данная команда отсутствует, но есть похожая роутерная команда:
+
+encapsulation dot1q <vlan> - вводится на сабинтерфейсе и определяет протокол и метку vlan сабинтерфейса.
+
+Административный режим (administrative mode) – позволяет коммутаторам взаимодействовать, чтобы динамически создавать trunk-соединения и выбирать протокол для этого соединения.
+
+Рассмотрим топологию:
+  
+![trunk](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.9_trunk.png)
+
+Преднастроены vlan 1 на всех компьютерах слева, vlan 2 – сверху, vlan 3 – справа.
+
+На верхнем и нижних коммутаторах включен режим dynamic auto на интерфейсе gi0/1:
+
+```
+Switch(config)#int gi0/1
+Switch(config-if)#switchport mode dynamic auto
+```
+![trunk2](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.10_trunk2.png)
+  
+Пакеты vlan 3 не проходят из верхней части в нижнюю, поскольку в dynamic auto режиме оба коммутатора ждут получения DTP от другого коммутатора. Пусть на одном из коммутаторов интерфейс перевели в режим dynamic desirable:
+
+```
+Switch(config)#int gi0/1
+Switch(config-if)#switchport mode dynamic desirable
+```
+![trunk3](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.11_trunk3.png)
+
+В этом случае arp и пинг из верхней части vlan 3 начинает проходить в нижнюю. Оба коммутатора настроили trunk по dot1q, поскольку 2960 поддерживает только dot1q.
+
+![trunk4](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.12_trunk4.png)
+  
+![trunk5](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.13_trunk5.png)
+
+Стоит заметить, что если на одном коммутаторе настроен switchport mode trunk, а на другом – switchport mode dynamic auto, trunk-соединение будет создано через обмен DTP-пакетами. В целях безопасности рекомендуется отключать этот обмен командой switchport nonegotiate.
+
+Также рекомендуется не использовать режим access с одной стороны, trunk с другой.
+
+Далее приводится таблица, в которой столбцами и строками являются заданные на коммутаторах режимы, а в ячейках указан тип создаваемого соединения для этой комбинации.
+
+|Админ. режим|Access|Dyn. Auto |Trunk|Dyn. Desirable|
+| :- | :- | :- | :- | :- |
+|access |access|access|Do not use|Access|
+|Dyn. auto|access|access|trunk|Trunk|
+|trunk|Do not use|trunk|trunk|Trunk|
+|Dyn. desirable|access|trunk|trunk|trunk|
+  
+# Практика:
+
+Компьютерам настроить IP-адреса, шлюзы. На коммутаторах настроить access-порты. Настроить trunk порты. Отключить vtp (vtp mode transparent). На роутере настроить subinterfaces. Нативному vlan (1) предоставить основной интерфейс, для остальных подинтерфейсы, на каждом подинтерфейсе включить encapsulation dot1q <vlan>. Обязательно настроить trunk между коммутатором и роутером.
+
+Чтобы отрезать vlan 1 от внешнего мира между Switch2 и Switch3 настроить trunk-соединение таким образом, что switchport trunk allowed vlan 2-3. 
