@@ -35,15 +35,15 @@ VLANs также используются для ускорения работы
 
 Можно создавать сети без trunk’ов, только с access-портами, как на рисунке. Тогда для передачи кадров одной VLAN между коммутаторами потребуется отдельное физическое подключение (по одному интерфейсу каждого коммутатора).
 
-![VLAN]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.1 VLAN.png")
+![VLAN]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.1_VLAN.png")
 
 Схема работает, но плохо масштабируется (для 20 VLAN потребуется 20 портов с каждой стороны). 
 
 Есть два протокола для реализации trunk (изменяющих обычный Ethernet, добавляя туда метки). Старый протокол от Cisco - ISL (Inter-Switch Link) и более новый 802.1Q, которым пользуется большинство производителей, включая Cisco. Диапазон VLAN в обоих -–1-4094, для меток используется 12 бит с двумя зарезервированными значениями (0 и 4095). Этот диапазон дробится на два: обычный 1-1005 и расширенный 1006-4094, только некоторые коммутаторы могут использовать последний. 
 
-![802.1Q]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.2 802.1Q.png")
+![802.1Q]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.2_802.1Q.png")
 
-![eth802.1q]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.3 eth802.1q.png")
+![eth802.1q]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.3_eth802.1q.png")
 
 По умолчанию vlan 1 – native vlan. У native vlan есть важная особенность – с его помощью можно передавать пакеты коммутаторы, не поддерживающему 802.1q. Метка 802.1q просто не добавляется к пакетам vlan 1.
 
@@ -53,7 +53,7 @@ VLANs также используются для ускорения работы
 
 Первый пример.
 
-![1st example]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.4 1st example.png")
+![1st example]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.4_1st_example.png")
 
 Создание VLAN и конфигурирование портов доступа (access ports).
 Последовательность действий следующая:
@@ -87,14 +87,14 @@ Switch(config-if-range)#end
 ```
 
 Вывести информацию о принадлежности интерфейсов к VLANs.
-![cmd1]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.5 cmd1.png")
+![cmd1]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.5_сmd1.png")
 
 Вывести информацию о конкретном VLAN, его названии и номерах его интерфейсов.
-![cmd2]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.6 cmd2.png")
+![cmd2]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.6_cmd2.png")
 
 Второй пример.
 
-![2nd example]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.7 2nd example.png")
+![2nd example]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.7_2nd_example.png")
 
 В данном примере используется 6 портов коммутатора, каждый из которых является портом доступа (подключен к конечному устройству). Тэгированные пакеты одного VLAN не должны передаваться коммутатором в другие VLAN. Для этого необходимо использовать команду switchport mode access, упомянутую ранее. Данная команда отключает DTP протокол (Dynamic Trunking Protocol), который используется для установления trunk-соединения.
 
@@ -114,7 +114,7 @@ Switch(config-if-range)#switchport mode access
 Switch(config-if-range)#exit
 ```
 
-![cmd3]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.8 cmd3.png")
+![cmd3]("https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.8_cmd3.png")
 
 Как итог использования switchport mode access – коммутатор точно не отправит ARP-пакет из, допустим, порта VLAN 1 в порт VLAN 3, на котором без этого внезапно могла оказаться настройка switchport mode trunk, и конечное устройство из VLAN 3 смогло бы перехватить этот пакет.
 
