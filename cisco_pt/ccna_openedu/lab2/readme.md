@@ -87,7 +87,7 @@ Switch(config-if-range)#end
 ```
 
 Вывести информацию о принадлежности интерфейсов к VLANs.
-![cmd1](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.5_сmd1.png)
+![cmd1](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.5_cmd1.png)
 
 Вывести информацию о конкретном VLAN, его названии и номерах его интерфейсов.
 ![cmd2](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab2/2.6_cmd2.png)
