@@ -170,7 +170,11 @@ spanning-tree [vlan x] cost y
 
 1) Корневой коммутатор
 
-Из вывода команды show spanning-tree на каждом из коммутаторов получены следующие значения Bridge ID (Priority + MAC) и port costs:
+Из вывода команды:
+```
+show spanning-tree
+```
+на каждом из коммутаторов получены следующие значения Bridge ID (Priority + MAC) и port costs:
 
 ![4](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab3/4.png)
 
