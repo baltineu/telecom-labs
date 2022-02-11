@@ -4,7 +4,7 @@
 # Предварительные настройки
 Итак, топология. Наверное, у вас будет другая, в таком случае надеюсь, что этот мануал всё же будет вам полезен:
 
-![Топология](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab4/1.png)
+![Топология](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/topology4.PNG)
 
 Оранжевая часть – там, где между роутерами должна быть OSPF-маршрутизация.
 
