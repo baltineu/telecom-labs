@@ -67,26 +67,32 @@
 <table>
     <thead>
         <tr>
-            <th>Layer 1</th>
-            <th>Layer 2</th>
-            <th>Layer 3</th>
+            <th>0 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 7</th>
+            <th>8 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 15</th>
+            <th>16 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 31</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td rowspan=4>L1 Name</td>
-            <td rowspan=2>L2 Name A</td>
-            <td>L3 Name A</td>
+            <td> &nbsp&nbspКоманда <br></br></td>
+            <td> &nbsp&nbsp&nbspВерсия <br></br></td>
+            <td colspan=2> &nbsp&nbspНе используется <br></br></td>
         </tr>
         <tr>
-            <td>L3 Name B</td>
+            <td colspan=2 align="center"> Идентификатор <br>адресного пространства</br></td>
+            <td> Тэг маршрута (v2)<br></br></td>
         </tr>
         <tr>
-            <td rowspan=2>L2 Name B</td>
-            <td>L3 Name C</td>
+            <td colspan=3 align="center">IP-адрес сети</td>
         </tr>
         <tr>
-            <td>L3 Name D</td>
+            <td colspan=3 align="center">Маска сети (v2)</td>
+        </tr>
+        <tr>
+            <td colspan=3 align="center">Адрес следующего роутера (v2)</td>
+        </tr>
+        <tr>
+            <td colspan=3 align="center">Метрика</td>
         </tr>
     </tbody>
 </table>
