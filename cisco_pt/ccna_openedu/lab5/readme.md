@@ -31,9 +31,9 @@
 Роутеры 0,1,2,3 обмениваются информацией о сетях по протоколу RIP.
 На роутерах 2, 4 необходимо настроить статическую маршрутизацию между сетями 192.168.1.0/27 с одной стороны и 192.168.1.32/27 и 192.168.1.64/27 с другой.
 
-![Статика1](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab5/1.png)
+![Статика1](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab5/1.PNG)
 
-![Статика2](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab5/2.png)
+![Статика2](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/lab5/2.PNG)
 
 Используется маска 255.255.255.224, полученная из двоичного представления (1110000 = 224):
 
