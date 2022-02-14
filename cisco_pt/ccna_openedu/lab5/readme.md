@@ -194,11 +194,11 @@ Dest. IP: 255.255.255.255
 
 В рамках данной топологии настроим раздачу IP-адресов в сети 192.168.1.64/27 для интерфейсов fa0/3-10 (8 интерфейсов), для этого необходимо на Switch3 у этих портов настроить метку VLAN 2:
 
-```Switch(config)#int range fa0/3-10
+```Switch(config)\#int range fa0/3-10
 
-Switch(config-if-range)#switchport mode access
+Switch(config-if-range)\#switchport mode access
 
-Switch(config-if-range)#switchport access vlan 2```
+Switch(config-if-range)\#switchport access vlan 2```
 
 Теперь при подключении к этим портам компьютеры оказываются в VLAN 2 и могут использовать DHCP.
 
