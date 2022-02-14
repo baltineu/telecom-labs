@@ -11,7 +11,7 @@
 
 >[Access lists (списки доступа)](#access-lists-списки-доступа)
 
->[Дополнительное задание](#дополнительное-задание)
+>[Дополнительные задания](#дополнительные-задания)
 
 # Схема сетей и статические маршруты
 ![Топология](https://github.com/baltineu/telecom-labs/blob/main/cisco_pt/ccna_openedu/sources/topology5.PNG)
