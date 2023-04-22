@@ -391,7 +391,7 @@ FIN (Finish) - флаг завершения соединения.
 Расширенные списки доступа можно настроить на проверку как параметров источника, так и получателя, проверку типа протокола транспортного уровня (udp/tcp) и его портов, проверку на icmp-протокол, на тип icmp-сообщения.  
 `access-list <100..199> {permit | deny | remark} protocol {address | any | host} [source-wildcard] [operator operand] {address | any | host} [destination-wildcard] [operator operand]`  
 Пример команды:
-`access-list 101 permit icmp host 192.168.1.2 any`  
+`access-list 101 deny icmp host 192.168.1.2 any`  
 Запрещает любые icmp-сообщения от конкретного хоста (192.168.1.2) до любого другого хоста.  
   
 В любом списке доступа проверка и применение правил происходит сверху вниз.  
